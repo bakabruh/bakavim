@@ -14,6 +14,9 @@ vim.keymap.set("n", "n", "nzzzv", {})
 vim.keymap.set("n", "N", "Nzzzv", {})
 vim.keymap.set("i", "<C-c>", "<Esc>", {})
 
+-- Toggle undo tree
+vim.keymap.set("n", "<leader>?<C-w><C-w>", vim.cmd.UndotreeToggle, {})
+
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
