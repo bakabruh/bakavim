@@ -7,18 +7,46 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "ts_ls" },
-			})
-		end,
+		lazy = false,
+		opts = {
+			auto_install = true,
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
+		lazy = false,
 		config = function()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({})
-			lspconfig.ts_ls.setup({})
+			-- Lua language server setting up
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+
+			-- Typescript/Javascript language server setting up
+			lspconfig.ts_ls.setup({
+				capabilities = capabilities,
+			})
+
+			-- Html language server setting up
+			lspconfig.html.setup({
+				capabilities = capabilities,
+			})
+
+			-- Go language server setting up
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+				settings = {
+					gopls = {
+						analyses = {
+							unusedparams = true,
+						},
+						staticcheck = true,
+						gofumpt = true, -- Stricter formatting
+					},
+				},
+			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
