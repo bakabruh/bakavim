@@ -10,6 +10,8 @@ return {
         italic = false,
         bold = true,
         transparent = false,
+        disable_background = true,
+        disable_float_background = true,
       },
     })
     vim.cmd.colorscheme("rose-pine")
