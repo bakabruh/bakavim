@@ -9,6 +9,10 @@ vim.cmd("set hlsearch")
 vim.cmd("set incsearch")
 vim.cmd("set guicursor=a:blinkon1")
 vim.cmd("set guicursor=n:block,i:block-blinkwait100-blinkon100-blinkoff100")
+vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
+vim.cmd([[highlight NormalNC guibg=NONE ctermbg=NONE]])
+vim.cmd([[highlight SignColumn guibg=NONE ctermbg=NONE]])
+vim.cmd([[highlight VertSplit guibg=NONE ctermbg=NONE]])
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>", {})
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {})
@@ -20,11 +24,7 @@ vim.keymap.set("n", "N", "Nzzzv", {})
 vim.keymap.set("i", "<C-c>", "<Esc>", {})
 
 -- Toggle undo tree
-vim.keymap.set("n", "<leader>?<C-w><C-w>", vim.cmd.UndotreeToggle, {})
+vim.keymap.set("n", "<leader>?", vim.cmd.UndotreeToggle, {})
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
-vim.cmd([[highlight NormalNC guibg=NONE ctermbg=NONE]])
-vim.cmd([[highlight SignColumn guibg=NONE ctermbg=NONE]])
-vim.cmd([[highlight VertSplit guibg=NONE ctermbg=NONE]])
